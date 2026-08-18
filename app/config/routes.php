@@ -45,3 +45,7 @@ defined('PREVENT_DIRECT_ACCESS') OR exit('No direct script access allowed');
 /** @var object $router **/
 
 $router->get('/', 'Welcome::index');
+
+// Direct routes gamit ang LavaLust v4 $router syntax
+$router->get('student/home', 'student::index', ['middleware' => ['StudentMiddleware']]);
+$router->get('student/profile', 'student::profile', ['middleware' => ['StudentMiddleware']]);
