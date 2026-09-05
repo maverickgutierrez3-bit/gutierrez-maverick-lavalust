@@ -1,37 +1,34 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Student Portal | Maverick Gutierrez</title>
+    <title>Student Portal | Gutierrez</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-black text-zinc-100 min-h-screen flex flex-col justify-between font-sans">
-
-    <!-- Top Bar -->
-    <header class="bg-zinc-950 border-b border-zinc-800 shadow-md">
-        <div class="max-w-4xl mx-auto px-6 py-4 flex justify-between items-center">
-            <div class="flex items-center space-x-2">
-              </div>
-            <nav class="space-x-4 text-sm font-semibold">
-                <a href="<?=site_url('student/home');?>" class="text-orange-500 hover:text-orange-400 transition">Home</a>
-                <a href="<?=site_url('student/profile');?>" class="text-zinc-400 hover:text-orange-500 transition">Profile</a>
+<body class="bg-[#1a1b2e] text-slate-100 min-h-screen font-sans antialiased">
+    <header class="border-b border-slate-800 bg-[#171b2d]">
+        <div class="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
+            <div class="text-sm font-semibold tracking-wide text-slate-300">Student Portal</div>
+            <nav class="flex items-center gap-2">
+                <a href="<?=site_url('student/home'); ?>" class="px-3 py-2 rounded-md text-sm font-medium text-orange-400 bg-slate-800/60 border border-slate-700">Home</a>
+                <a href="<?=site_url('student/profile'); ?>" class="px-3 py-2 rounded-md text-sm font-medium text-slate-300 hover:text-white">Profile</a>
             </nav>
         </div>
     </header>
 
-    <!-- Content -->
-    <main class="max-w-4xl mx-auto px-6 py-10 w-full flex-grow">
-        <div class="bg-zinc-950 rounded-xl shadow-lg border border-zinc-800 p-8">
-            <h1 class="text-2xl font-bold text-white mb-2">Welcome to my Student Page</h1>
-            <p class="text-zinc-400">This is the main page for Maverick Gutierrez's .</p>
+    <main class="min-h-[calc(100vh-77px)] flex items-center justify-center text-center px-6">
+        <div>
+            <h1 class="text-4xl md:text-5xl font-bold text-orange-500 leading-tight">Welcome to My Student Page</h1>
+            <p class="mt-5 text-lg text-slate-300">
+                This is the home page for Maverick Gutierrez.
+            </p>
+            <div class="mt-6 text-blue-400 text-base font-medium">
+                <a href="<?=site_url('student/home'); ?>" class="hover:text-blue-300">Home</a>
+                <span class="mx-3 text-slate-500">|</span>
+                <a href="<?=site_url('student/profile'); ?>" class="hover:text-blue-300">Student Profile</a>
+            </div>
         </div>
     </main>
-
-    <!-- Footer -->
-    <footer class="bg-zinc-950 border-t border-zinc-900 py-4 text-center text-xs text-zinc-500">
-        &copy; <?= date('Y'); ?> Student Portal &bull; LavaLust Framework
-    </footer>
-
 </body>
 </html>
