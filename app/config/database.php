@@ -43,7 +43,7 @@ defined('PREVENT_DIRECT_ACCESS') OR exit('No direct script access allowed');
 */
 
 $database['main'] = [
-    'driver'    => 'pdo',
+    'driver'    => 'mysql',
     'hostname'  => getenv('DB_HOST') ?: 'mysql-3df4649f-maverickgutierrez3-0c46.l.aivencloud.com',
     'username'  => getenv('DB_USER') ?: 'avnadmin',
     'password'  => getenv('DB_PASS') ?: '',
@@ -53,13 +53,6 @@ $database['main'] = [
     'collation' => 'utf8mb4_general_ci',
     'prefix'    => '',
 ];
-
-if ( ! function_exists('database_config')) {
-    function database_config() {
-        global $database;
-        return $database;
-    }
-}
 
 return $database;
 ?>
