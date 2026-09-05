@@ -40,34 +40,21 @@ defined('PREVENT_DIRECT_ACCESS') OR exit('No direct script access allowed');
 | -------------------------------------------------------------------
 | This file will contain the settings needed to access your database.
 | -------------------------------------------------------------------
-| EXPLANATION OF VARIABLES
-| -------------------------------------------------------------------
-|
-|	['driver'] 		The driver of your database server.
-|	['hostname'] 	The hostname of your database server.
-|	['port'] 		The port used by your database server.
-|	['username'] 	The username used to connect to the database
-|	['password'] 	The password used to connect to the database
-|	['database'] 	The name of the database you want to connect to
-|	['charset']		The default character set
-|   ['dbprefix']    You can add an optional prefix, which will be added
-|				    to the table name when using the  Query Builder class
-|   You can create new instance of the database by adding new element of
-|   $database variable.
-|   Example: $database['another_example'] = array('key' => 'value')
 */
 
-
-defined('PREVENT_DIRECT_ACCESS') OR exit('No direct script access allowed');
-
-$db['default'] = array(
-    'hostname' => getenv('DB_HOST') ?: 'localhost',
-    'username' => getenv('DB_USERNAME') ?: 'root',
-    'password' => getenv('DB_PASSWORD') ?: '',
-    'database' => getenv('DB_NAME') ?: 'mydb',
-    'port'     => getenv('DB_PORT') ?: 3306,
-    'dbdriver' => 'mysqli',
-    'pconnect' => FALSE,
-    'db_debug' => TRUE,
-);
+function database_config() {
+    return [
+        'main' => [
+            'driver'   => 'pdo',
+            'hostname' => getenv('DB_HOST') ?: 'mysql-3df4649f-maverickgutierrez3-0c46.l.aivencloud.com',
+            'username' => getenv('DB_USER') ?: 'avnadmin',
+            'password' => getenv('DB_PASS') ?: '',
+            'database' => getenv('DB_NAME') ?: 'defaultdb',
+            'port'     => getenv('DB_PORT') ?: 26176,
+            'charset'  => 'utf8mb4',
+            'collation'=> 'utf8mb4_general_ci',
+            'prefix'   => '',
+        ]
+    ];
+}
 ?>
