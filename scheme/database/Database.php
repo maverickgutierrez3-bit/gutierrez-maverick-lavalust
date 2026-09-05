@@ -35,9 +35,9 @@ defined('PREVENT_DIRECT_ACCESS') OR exit('No direct script access allowed');
  */
 
 /**
-* ------------------------------------------------------
-*  Class Database
-* ------------------------------------------------------
+ * ------------------------------------------------------
+ *  Class Database
+ * ------------------------------------------------------
  */
 class Database {
     /**
@@ -219,19 +219,19 @@ class Database {
             : 'utf8mb4';
 
         $host = isset($database_config['hostname']) && !empty($database_config['hostname'])
-            ? $database_config['hostname']
+            ? trim($database_config['hostname'])
             : 'localhost';
 
         $port = isset($database_config['port']) && !empty($database_config['port'])
-            ? $database_config['port']
+            ? trim($database_config['port'])
             : null;
 
         $dbname_value = isset($database_config['database']) && !empty($database_config['database'])
-            ? $database_config['database']
+            ? trim($database_config['database'])
             : '';
 
         $username = isset($database_config['username']) && !empty($database_config['username'])
-            ? $database_config['username']
+            ? trim($database_config['username'])
             : 'root';
 
         $password = isset($database_config['password']) && !empty($database_config['password'])
@@ -244,10 +244,16 @@ class Database {
 
         switch ($driver) {
             case 'mysql':
-                $dsn = "mysql:host=$host;dbname=$dbname_value;charset=$charset;port=$port";
+                $dsn = "mysql:host=$host;dbname=$dbname_value;charset=$charset";
+                if (!empty($port)) {
+                    $dsn .= ";port=$port";
+                }
                 break;
             case 'pgsql':
-                $dsn = "pgsql:host=$host;port=$port;dbname=$dbname_value;user=$username;password=$password";
+                $dsn = "pgsql:host=$host;dbname=$dbname_value;user=$username;password=$password";
+                if (!empty($port)) {
+                    $dsn .= ";port=$port";
+                }
                 break;
             case 'sqlite':
                 if (empty($path)) {
@@ -256,7 +262,8 @@ class Database {
                 $dsn = "sqlite:$path";
                 break;
             case 'sqlsrv':
-                $dsn = "sqlsrv:Server=$host,$port;Database=$dbname_value";
+                $port_string = !empty($port) ? ",$port" : "";
+                $dsn = "sqlsrv:Server=$host$port_string;Database=$dbname_value";
                 break;
             default:
                 throw new PDOException("Unsupported database driver: $driver");
