@@ -4,6 +4,10 @@ AddDefaultCharset UTF-8
     RewriteEngine On
 
     # --------------------------------------------------
+    # Exclude index.php from rewriting to prevent infinite loops
+    RewriteRule ^index\.php$ - [L]
+
+    # --------------------------------------------------
     # Allow index.php
     <Files "index.php">
         Require all granted
