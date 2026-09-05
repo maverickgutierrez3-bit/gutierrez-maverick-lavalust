@@ -42,13 +42,19 @@ defined('PREVENT_DIRECT_ACCESS') OR exit('No direct script access allowed');
 | -------------------------------------------------------------------
 */
 
+$db_host = trim(preg_replace('/\s+/', '', getenv('DB_HOST') ?: 'mysql-3df4649f-maverickgutierrez3-0c46.l.aivencloud.com'));
+$db_user = trim(getenv('DB_USER') ?: 'avnadmin');
+$db_pass = trim(getenv('DB_PASS') ?: '');
+$db_name = trim(getenv('DB_NAME') ?: 'defaultdb');
+$db_port = trim(getenv('DB_PORT') ?: '26176');
+
 $database['main'] = [
     'driver'    => 'mysql',
-    'hostname'  => getenv('DB_HOST') ?: 'mysql-3df4649f-maverickgutierrez3-0c46.l.aivencloud.com',
-    'username'  => getenv('DB_USER') ?: 'avnadmin',
-    'password'  => getenv('DB_PASS') ?: '',
-    'database'  => getenv('DB_NAME') ?: 'defaultdb',
-    'port'      => (int) (getenv('DB_PORT') ?: 26176),
+    'hostname'  => $db_host,
+    'username'  => $db_user,
+    'password'  => $db_pass,
+    'database'  => $db_name,
+    'port'      => $db_port,
     'charset'   => 'utf8mb4',
     'collation' => 'utf8mb4_general_ci',
     'prefix'    => '',
