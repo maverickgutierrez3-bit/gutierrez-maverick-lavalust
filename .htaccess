@@ -24,10 +24,6 @@ AddDefaultCharset UTF-8
     </FilesMatch>
 
     # --------------------------------------------------
-    # Prevent directory browsing
-    Options -Indexes
-
-    # --------------------------------------------------
     # Route all requests through root index.php
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteCond %{REQUEST_FILENAME} !-d
