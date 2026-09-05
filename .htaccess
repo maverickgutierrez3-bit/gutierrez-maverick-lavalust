@@ -1,15 +1,19 @@
 AddDefaultCharset UTF-8
 
-# Bigyan ng explicit permission ang Apache na gamitin ang index.php bilang main file
 DirectoryIndex index.php
 
 <IfModule mod_rewrite.c>
     RewriteEngine On
 
-    # Huwag i-rewrite kung index.php na mismo ang tina-target
-    RewriteCond %{REQUEST_URI} ^/index\.php
+    # Deny access to sensitive directories
+    RedirectMatch 403 ^/(app|scheme|console|runtime)/
 
-    # Route lahat ng requests gamit ang Query String para walang infinite loop
+    # Deny access to sensitive files
+    <FilesMatch "\.(env|json|xml|log|md|lock|git|ini|bak|sql)$">
+        Require all denied
+    </FilesMatch>
+
+    # Pass all routes cleanly to index.php
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteRule ^(.*)$ index.php?/$1 [L,QSA]
