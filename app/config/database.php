@@ -39,14 +39,18 @@ defined('PREVENT_DIRECT_ACCESS') OR exit('No direct script access allowed');
 | DATABASE CONNECTIVITY SETTINGS
 | -------------------------------------------------------------------
 | This file will contain the settings needed to access your database.
+|
+| IMPORTANT: No real credentials are hardcoded here. Set DB_HOST,
+| DB_USER, DB_PASS, DB_NAME, and DB_PORT in your local .env file
+| (never committed to GitHub) or in Render's Environment Variables.
 | -------------------------------------------------------------------
 */
 
-$db_host = trim(getenv('DB_HOST') ?: 'lavalust-db-maverickgutierrez3-9117.k.aivencloud.com');
-$db_user = trim(getenv('DB_USER') ?: 'avnadmin');
-$db_pass = trim(getenv('DB_PASS') ?: 'AVNS_xsjHpEOvqPe6s89qtXm');
+$db_host = trim(getenv('DB_HOST') ?: '');
+$db_user = trim(getenv('DB_USER') ?: '');
+$db_pass = trim(getenv('DB_PASS') ?: '');
 $db_name = trim(getenv('DB_NAME') ?: 'defaultdb');
-$db_port = trim(getenv('DB_PORT') ?: '13940');
+$db_port = trim(getenv('DB_PORT') ?: '');
 
 $database['main'] = [
     'driver'    => 'mysql',

@@ -75,7 +75,7 @@ $config['environment'] = getenv('APP_ENV') ?: 'development';
 | local development servers (e.g. php lava run on port 3000)
 |
 */
-$config['base_url']                 = 'http://localhost:3000/';
+   $config['base_url']                 = 'http://localhost:8080/lavalust/LavaLust-dev-v4/public/';
 
 /*
 |--------------------------------------------------------------------------
