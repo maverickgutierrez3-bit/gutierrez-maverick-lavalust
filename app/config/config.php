@@ -36,7 +36,7 @@ defined('PREVENT_DIRECT_ACCESS') OR exit('No direct script access allowed');
 
 /*
 | -------------------------------------------------------------------
-|  Config Files
+| Config Files
 | -------------------------------------------------------------------
 | This file is for setting-up default settings.
 |
@@ -44,7 +44,7 @@ defined('PREVENT_DIRECT_ACCESS') OR exit('No direct script access allowed');
 
 /*
 | -------------------------------------------------------------------
-|  Your Own Configs
+| Your Own Configs
 | -------------------------------------------------------------------
 | For easy access on your config, just put them below
 | You can simply get configs using config_item() function anywhere
@@ -71,11 +71,13 @@ $config['environment'] = getenv('APP_ENV') ?: 'development';
 | Base Site URL
 |--------------------------------------------------------------------------
 |
-| URL to your LavaLust root. Set to dynamic host detection to support
-| local development servers (e.g. php lava run on port 3000)
+| URL to your LavaLust root. Dynamic host detection supports both local 
+| and cloud environments like Render.
 |
 */
-   $config['base_url']                 = 'http://localhost:8080/lavalust/LavaLust-dev-v4/public/';
+$protocol = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on') || (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] === 'https') ? "https" : "http";
+$host = $_SERVER['HTTP_HOST'] ?? 'localhost';
+$config['base_url'] = $protocol . "://" . $host . "/";
 
 /*
 |--------------------------------------------------------------------------
